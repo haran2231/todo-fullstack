@@ -6,4 +6,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.5"
   }
+  "scripts": {
+  "start": "node server.js" // Adjust the command according to your project setup
+}
+
 }
