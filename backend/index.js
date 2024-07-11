@@ -8,11 +8,11 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-// Connection URI
-const uri = "mongodb://127.0.0.1:27017/todo"; // Replace with your MongoDB URI and database name
+// Corrected Connection URI
+const uri = "mongodb+srv://haran2231:71KIlv3q400BgjFK@cluster0.guha9ii.mongodb.net/todo-fullstack?retryWrites=true&w=majority";
 
 // Create a new MongoClient
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {monitorCommands:true});
 
 async function connectDB() {
   try {
