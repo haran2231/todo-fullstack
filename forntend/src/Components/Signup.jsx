@@ -65,7 +65,7 @@ const Signup = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/signup",
+        "https://todo-fullstack-zcsg.onrender.com/signup",
         userData
       );
       console.log("Response:", response.data);
@@ -89,8 +89,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="bg-orange-400 h-screen py-52 px-6 flex flex-col justify-center items-center">
-      <h1 className="text-center text-3xl font-semibold">
+    <div className="flex flex-col items-center justify-center h-screen px-6 bg-orange-400 py-52">
+      <h1 className="text-3xl font-semibold text-center">
         Signup Now to maintain Todo Activity
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-96">
@@ -139,7 +139,7 @@ const Signup = () => {
         />
         {errors.useremail && <span className="text-red-600">{errors.useremail}</span>}
         <input
-          className="bg-black my-5 text-white p-2"
+          className="p-2 my-5 text-white bg-black"
           type="submit"
           value={loading ? "Signing Up..." : "Sign Up"}
           disabled={loading}

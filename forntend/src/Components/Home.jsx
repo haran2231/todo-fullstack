@@ -15,7 +15,7 @@ const Home = () => {
 
   const fetchActivities = () => {
     axios
-      .get("http://localhost:5000/activities")
+      .get("https://todo-fullstack-zcsg.onrender.com/activities")
       .then((response) => {
         setActivities(response.data.activities);
       })
@@ -31,7 +31,7 @@ const Home = () => {
   const addActivity = (e) => {
     e.preventDefault(); // Prevent form submission
     axios
-      .post("http://localhost:5000/activity", { activity })
+      .post("https://todo-fullstack-zcsg.onrender.com/activity", { activity })
       .then((response) => {
         console.log("Activity added successfully:", response.data);
         fetchActivities(); // Refresh activities list after adding new activity
@@ -44,7 +44,7 @@ const Home = () => {
 
   const deleteActivity = (index) => {
     axios
-      .delete(`http://localhost:5000/activity/${index}`)
+      .delete(`https://todo-fullstack-zcsg.onrender.com/activity/${index}`)
       .then((response) => {
         console.log("Activity deleted successfully:", response.data);
         fetchActivities();
@@ -63,7 +63,7 @@ const Home = () => {
   const updateActivity = (e) => {
     e.preventDefault(); // Prevent form submission
     axios
-      .put(`http://localhost:5000/activity/${editIndex}`, { activity })
+      .put(`https://todo-fullstack-zcsg.onrender.com/activity/${editIndex}`, { activity })
       .then((response) => {
         console.log("Activity updated successfully:", response.data);
         fetchActivities(); // Refresh activities list after updating activity
@@ -81,42 +81,42 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-orange-400 text-center pt-20">
+    <div className="pt-20 text-center bg-orange-400">
       <div>
         <h1 className="text-3xl font-semibold">Enter your today's activity</h1>
         <input
           type="text"
-          className="mt-5 p-2"
+          className="p-2 mt-5"
           placeholder="Enter your activity"
           value={activity}
           onChange={onchange}
         />
         <input
           type="submit"
-          className="bg-black p-2 ml-3 md:mt-0 mt-4 text-white"
+          className="p-2 mt-4 ml-3 text-white bg-black md:mt-0"
           value={isEditing ? "Update Activity" : "Add Activity"}
           onClick={isEditing ? updateActivity : addActivity}
         />
       </div>
 
-      <div className="border border-solid border-black mx-2 mt-6 md:mx-52">
-        <ul className="text-left py-4 px-3">
+      <div className="mx-2 mt-6 border border-black border-solid md:mx-52">
+        <ul className="px-3 py-4 text-left">
           {activities.map((act, index) => (
             <div
-              className="flex justify-around items-center gap-5 my-2"
+              className="flex items-center justify-around gap-5 my-2"
               key={act.id}
             >
               <li className="w-1/2">
                 {index + 1}. {act.activity}
               </li>
               <button
-                className="bg-black p-2 w-1/4 text-white"
+                className="w-1/4 p-2 text-white bg-black"
                 onClick={() => editActivity(index)}
               >
                 Edit
               </button>
               <button
-                className="bg-black p-2 w-1/4 text-white"
+                className="w-1/4 p-2 text-white bg-black"
                 onClick={() => deleteActivity(index)}
               >
                 Delete
@@ -128,7 +128,7 @@ const Home = () => {
 
       <div>
         <input
-          className="bg-black py-2 px-6 mb-3 text-white mt-3"
+          className="px-6 py-2 mt-3 mb-3 text-white bg-black"
           type="button"
           value="Logout"
           onClick={onLogout}

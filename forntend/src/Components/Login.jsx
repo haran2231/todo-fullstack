@@ -29,7 +29,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/login", logindata);
+      const response = await axios.post("https://todo-fullstack-zcsg.onrender.com/login", logindata);
       console.log("Response:", response.data);
       alert(response.data.message);
 
@@ -48,8 +48,8 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-orange-400 h-screen py-52 px-6 flex flex-col justify-center items-center">
-      <h1 className="text-center text-3xl font-semibold ">
+    <div className="flex flex-col items-center justify-center h-screen px-6 bg-orange-400 py-52">
+      <h1 className="text-3xl font-semibold text-center ">
         Login Now To Access and maintain Todo Activity
       </h1>
       <form action="" className="flex flex-col mt-5 w-96">
@@ -73,7 +73,7 @@ const Login = () => {
         />
         {error && <span className="text-red-600">{error}</span>}
         <input
-          className="bg-black my-5 text-white p-2"
+          className="p-2 my-5 text-white bg-black"
           type="submit"
           value="Login"
           onClick={handlesubmit}
